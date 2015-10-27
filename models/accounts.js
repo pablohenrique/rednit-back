@@ -30,7 +30,7 @@ var accountsSchema = new mongoose.Schema({
                                         facebookId: String,
                                         name: String,
                                         about: String,
-                                        likes: {type: [Schema.Types.Mixed], default: []}
+                                        likes: {type: [mongoose.Schema.Types.Mixed], default: []}
                                     },
                                     instant: Date
                                 }
@@ -54,7 +54,7 @@ var accountsSchema = new mongoose.Schema({
                                 twitterId: Number,
                                 text: String,
                                 createdAt: Date,
-                                favorites: {type: [Schema.Types.Mixed], default: []}
+                                favorites: {type: [mongoose.Schema.Types.Mixed], default: []}
                             }
                         ]
                     }
@@ -62,7 +62,7 @@ var accountsSchema = new mongoose.Schema({
             }
         }
     },
-    myFriends: {type: [Schema.Types.ObjectId], default: []},
+    myFriends: {type: [mongoose.Schema.Types.ObjectId], default: []},
     //    [
     //    {
     //        name: String,
@@ -107,7 +107,7 @@ var accountsSchema = new mongoose.Schema({
     //        loc: { type: [Number], index: '2d' }
     //    }
     //],
-    friendsOfMe: {type: [Schema.Types.ObjectId], default: []}
+    friendsOfMe: {type: [mongoose.Schema.Types.ObjectId], default: []}
     //    [
     //    {
     //        name: String,

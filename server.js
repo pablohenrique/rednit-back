@@ -16,7 +16,7 @@ mongoose.connect('mongodb://localhost/rednitbackend');
 // This is THE shit.
 var app = express();
 app.use(bodyparser.urlencoded({
-	extended: true
+    extended: true
 }));
 app.use(bodyparser.json());
 
