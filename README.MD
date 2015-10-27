@@ -2,6 +2,10 @@ Do you want to make this fucking awesome project works?!
 
 Follow these motherfuckin' steps:
 
+* Install node and mongodb
+```shell
+$ brew install node mongodb
+```
 * Clone this motherfucker
 * Go inside the cloned directory
 * Do this:
