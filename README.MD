@@ -19,6 +19,73 @@ nodemon server.js
 * Be happy as a motherfucker.
 
 
+### Account Object Structure
+```javascript
+{
+    name: String,
+    loc: { type: [Number], index: '2d' },
+    userData: {
+        id: Number,
+        email: String,
+        photoUrl: String,
+        accounts: {
+            facebookAccount: {
+                id: String,
+                likes: [
+                    {
+                        id: Number,
+                        account: [mongoose.Schema.Types.Mixed],
+                        page: {
+                            id: Number,
+                            facebookId: String,
+                            name: String,
+                            about: String,
+                            likes: [
+                                {
+                                    id: Number,
+                                    account: [mongoose.Schema.Types.Mixed],
+                                    page: {
+                                        id: Number,
+                                        facebookId: String,
+                                        name: String,
+                                        about: String,
+                                        likes: {type: [Schema.Types.Mixed], default: []}
+                                    },
+                                    instant: Date
+                                }
+                            ]
+                        },
+                        instant: Date
+                    }
+                ]
+            },
+            twitterAccount: {
+                id: Number,
+                favorites: [
+                    {
+                        id: Number,
+                        twitterId: Number,
+                        text: String,
+                        createdAt: Date,
+                        favorites: [
+                            {
+                                id: Number,
+                                twitterId: Number,
+                                text: String,
+                                createdAt: Date,
+                                favorites: {type: [Schema.Types.Mixed], default: []}
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    myFriends: {type: [Schema.Types.ObjectId], default: []},
+    friendsOfMe: {type: [Schema.Types.ObjectId], default: []}
+}
+```
+
 Fucking References:
 
 * https://github.com/matthoiland/restful-api-demo
