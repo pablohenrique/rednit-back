@@ -20,7 +20,12 @@ sudo npm install -g nodemon
 ``` shell
 nodemon server.js
 ```
-* Be happy as a motherfucker.
+
+
+* Wanna test and be happy as a motherfucker? Go to your browser and type this:
+```shell
+http://localhost:3000/api/accounts
+```
 
 
 ### Account Object Structure
