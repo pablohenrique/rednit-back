@@ -1,0 +1,25 @@
+{
+  "name": "rednit",
+  "version": "1.0.0",
+  "description": "A fucking awesome service to rednit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rednit",
+    "awesome"
+  ],
+  "author": "Silva, Pablo Henrique P.",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.4.2",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "geolib": "^2.0.18",
+    "mongoose": "^4.1.11",
+    "node-geolocation": "^1.15.14",
+    "node-restful": "^0.2.2",
+    "request": "^2.65.0"
+  }
+}
