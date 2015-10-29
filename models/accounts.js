@@ -2,6 +2,51 @@ var restful = require('node-restful');
 var mongoose = restful.mongoose;
 var modelName = 'Accounts';
 
+var pages = new mongoose.Schema ({
+    id: String,
+    name: String,
+    about: String,
+    peopleWhoLike: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}]
+});
+
+var tweets = new mongoose.Schema ({
+    id: Number,
+    text: String,
+    createdAt: Date,
+    favoritedBy : [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}]
+});
+
+var accountsSchemaNew = new mongoose.Schema({
+    name: String,
+    loc: { type: [Number], index: '2d' },
+    email: String,
+    photoUrl: String,
+    accounts: {
+        facebookAccount: {
+            id: String
+            likes: [
+                {
+                    id: String,
+                    page: {type: mongoose.Schema.Types.ObjectId, ref: 'Pages'}
+                    instant: Date
+                }
+            ],
+            friends : [ObjectId]
+        },
+        twitterAccount: {
+            id: Number,
+            favorites: [
+                {
+                    instant: Date,
+                    tweet: {type: mongoose.Schema.Types.ObjectId, ref: 'Tweets'}
+                }
+            ]
+            followers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}]
+            following: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}]
+        }
+    },
+})
+
 var accountsSchema = new mongoose.Schema({
     name: String,
     loc: { type: [Number], index: '2d' },
