@@ -153,5 +153,23 @@ var accountsSchema = new mongoose.Schema({
     //    }
     //]
 });
+//
+//accountsSchema.methods.saveArray = function(data){
+//    var Account = mongoose.model(modelName, accountsSchema);
+//    data.forEach(function (element) {
+//        var acc = Object.create(Account, element);
+//        acc.save(function (err) {
+//            return err;
+//        });
+//    });
+//};
+//
+//accountsSchema.methods.save = function(data){
+//    var Account = mongoose.model(modelName, accountsSchema);
+//    var acc = Object.create(Account, data);
+//    acc.save(function (err) {
+//        return err;
+//    });
+//};
 
 module.exports = restful.model(modelName, accountsSchema);
