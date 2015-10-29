@@ -15,7 +15,7 @@ Accounts.route('findPeople.get', {
         //res.json({ 'response': 200 });
         Accounts.findById(req.params.id, function(err, obj){
             if(err){
-                res.json(err);
+                res.status(500).json(err);
             } else {
                 Accounts.find({
                     loc : {
@@ -23,8 +23,10 @@ Accounts.route('findPeople.get', {
                             $center : [ obj._doc.loc, 40 * 0.000981747704245008 ]
                         }
                     }
+                },{
+                    _id: 1
                 }).exec(function(err,locations){
-                    res.json(false, (err) ? {} : locations );
+                    res.status(200).json(false, (err) ? {} : locations );
                 });
             }
         });

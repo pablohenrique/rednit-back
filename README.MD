@@ -95,6 +95,12 @@ http://localhost:3000/api/accounts
 }
 ```
 
+### How to import shit on MongoDB
+
+```sh
+$ mongoimport path/to/csv/file/file_name.csv --type csv --headerline --collection crimes
+```
+
 Fucking References:
 
 * https://github.com/matthoiland/restful-api-demo
