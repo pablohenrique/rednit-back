@@ -4,7 +4,8 @@ var async = require('async');
 var router = express.Router();
 
 // Models
-//var Locations = require('../models/locations');
+var Pages = require('../models/pages');
+var Tweets = require('../models/tweets');
 var Accounts = require('../models/accounts');
 
 // Routes
@@ -20,7 +21,7 @@ Accounts.route('findPeople.get', {
                 Accounts.find({
                     loc : {
                         $geoWithin : {
-                            $center : [ obj._doc.loc, 40 * 0.000981747704245008 ]
+                            $center : [ obj._doc.loc, 40 * 0.000981747704245008 ] /* 40 = 5 miles radius*/
                         }
                     }
                 },{
@@ -33,6 +34,12 @@ Accounts.route('findPeople.get', {
     }
 });
 Accounts.register(router, '/accounts');
+
+Pages.methods(['get', 'put', 'post', 'delete']);
+Pages.register(router, '/pages');
+
+Tweets.methods(['get', 'put', 'post', 'delete']);
+Tweets.register(router, '/tweets');
 
 // Return router
 module.exports = router;
