@@ -24,8 +24,6 @@ Accounts.route('findPeople.get', {
                             $center : [ obj._doc.loc, 40 * 0.000981747704245008 ] /* 40 = 5 miles radius*/
                         }
                     }
-                },{
-                    _id: 1
                 }).exec(function(err,locations){
                     res.status(200).json(false, (err) ? {} : locations );
                 });
