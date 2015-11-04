@@ -11,10 +11,15 @@ Array.prototype.add = function (elem) {
 };
 
 // Models
-//var Locations = require('../models/locations');
+var Pages = require('../models/pages');
+var Tweets = require('../models/tweets');
 var Accounts = require('../models/accounts');
 
 // Routes
+Pages.methods(['get', 'put', 'post', 'delete']);
+Pages.register(router, '/pages');
+Tweets.methods(['get', 'put', 'post', 'delete']);
+Tweets.register(router, '/tweets');
 Accounts.methods(['get', 'put', 'post', 'delete']);
 Accounts.register(router, '/accounts');
 
