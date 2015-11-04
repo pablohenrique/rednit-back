@@ -122,6 +122,15 @@ function(key, values){
 );
 ```
 
+### How to use findPeople method
+```bash
+[GET] http://localhost:3000/api/accounts/{user_id}/findPeople[?miles=INTEGER]
+```
+Keep in mind that the default "miles" is set to 4. That means the method will search people in a **5** miles radius.
+Use numbers in this range: [1..10]
+The "miles" query is OPTIONAL!
+The user_id IS NOT OPTIONAL!
+
 Fucking References:
 
 * https://github.com/matthoiland/restful-api-demo
