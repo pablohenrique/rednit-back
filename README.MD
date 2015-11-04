@@ -95,6 +95,33 @@ http://localhost:3000/api/accounts
 }
 ```
 
+### How to import shit on MongoDB
+
+```sh
+$ mongoimport path/to/csv/file/file_name.csv --type csv --headerline --collection crimes
+```
+
+### How to do Map Reduce on MongoDB
+On api.js (for example) do:
+```javascript
+schema.mapReduce(function(){
+    var milis = Date.parse(this.Date);
+    var date  = new Date(milis);
+    var daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    //emit the mapping between this document and the Day which it corresponds to.
+    emit(daysOfWeek[date.getDay()],1);
+},
+ // this function will be called over the daysOfWeek array above
+function(key, values){
+//reduce by summing all values mapped to 1's
+    return Array.sum(values);
+},
+{
+    out: 'crime day frequencies'
+}
+);
+```
+
 Fucking References:
 
 * https://github.com/matthoiland/restful-api-demo
