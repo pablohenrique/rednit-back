@@ -220,5 +220,42 @@
             -48.118105,
             -18.8876119
         ]
+    },
+    {
+        "name": "Cleber Junior",
+        "email": "cleber@gmail.com",
+        "photoUrl": "http://jafoste.net/pessoas-felizes-nao-falam-mal-dos-outros/cleber.jpg",
+        "accounts": {
+            "facebookAccount": {
+                "facebookId": "100003508141437",
+                "friends": [],
+                "likes": [
+                    {
+                        "page": "5639e241602d16cc03ff9137",
+                        "facebookId": "230809307041021",
+                        "instant": "2015-09-10T16:09:12.000Z"
+                    },
+                    {
+                        "page": "5639e1d7602d16cc03ff912f",
+                        "facebookId": "510168095752841",
+                        "instant": "2014-10-17T12:22:37.000Z"
+                    },
+                    {
+                        "page": "5639e1c4602d16cc03ff912e",
+                        "facebookId": "315435931982128",
+                        "instant": "2014-10-17T00:01:34.000Z"
+                    },
+                    {
+                        "page": "5639e266602d16cc03ff9139",
+                        "facebookId": "1614251518827491",
+                        "instant": "2015-10-24T19:29:18.000Z"
+                    }
+                ]
+            }
+        },
+        "loc": [
+            -48.118105,
+            -18.8876119
+        ]
     }
 ]
