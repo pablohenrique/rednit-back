@@ -21,8 +21,14 @@ Accounts.route('findPeople.get', {
                 var location = obj._doc.loc;
                 var miles = (req.query.miles || 4) * 10;
                 var facebookIdArrayFromAccountObject = [];
+                var twitterIdArrayFromAccountObject = [];
+
                 obj._doc.accounts.facebookAccount.likes.forEach(function(element){
                     facebookIdArrayFromAccountObject.push(element.facebookId);
+                });
+
+                obj._doc.accounts.twitterAccount.favorites.forEach(function(element){
+                    twitterIdArrayFromAccountObject.push(element.twitterId);
                 });
                 Accounts.find({
                     loc:{
@@ -33,6 +39,18 @@ Accounts.route('findPeople.get', {
                     _id:{
                         $ne: accountId
                     },
+                    //$and: [
+                    //    {
+                    //        "accounts.facebookAccount.likes.facebookId": {
+                    //                $in: facebookIdArrayFromAccountObject
+                    //            }
+                    //    },
+                    //    {
+                    //        "accounts.facebookAccount.likes.facebookId": {
+                    //            $in: twitterIdArrayFromAccountObject
+                    //        }
+                    //    }
+                    //]
                     "accounts.facebookAccount.likes.facebookId": {
                         $in: facebookIdArrayFromAccountObject
                     }
