@@ -5,7 +5,7 @@ var modelName = 'Tweets';
 var tweetsSchema = new mongoose.Schema ({
     twitterId: { type: Number, index: true },
     text: String,
-    createdAt: Date,
+    createdAt: Date
 });
 
 module.exports = restful.model(modelName, tweetsSchema);
