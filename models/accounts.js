@@ -5,30 +5,37 @@ var modelName = 'Accounts';
 var accountsSchema = new mongoose.Schema({
     name: String,
     loc: { type: [Number], index: '2d' },
-    email: String,
+    email: { type: String, index: true },
     photoUrl: String,
     accounts: {
         facebookAccount: {
-            id: String,
+            facebookId: { type: String, index: true },
             likes: [
                 {
-                    id: String,
-                    page: {type: mongoose.Schema.Types.ObjectId, ref: 'Pages'},
+                    facebookId: { type: String, index: true },
+                    page: {
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: 'Pages',
+                        index: true
+                    },
                     instant: Date
                 }
             ],
-            friends : [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}]
+            friends : {
+                type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
+                index: true
+            }
         },
         twitterAccount: {
-            id: Number,
-            favorites: [
-                {
-                    instant: Date,
-                    tweet: {type: mongoose.Schema.Types.ObjectId, ref: 'Tweets'}
-                }
-            ],
-            followers: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
-            following: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}]
+            twitterId: { type: Number, index: true },
+            favorites: {
+                type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweets' }],
+                index: true
+            },
+            following: {
+                type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
+                index: true
+            }
         }
     },
 })

@@ -3,7 +3,7 @@ var mongoose = restful.mongoose;
 var modelName = 'Tweets';
 
 var tweetsSchema = new mongoose.Schema ({
-    id: Number,
+    twitterId: { type: Number, index: true },
     text: String,
     createdAt: Date,
 });
