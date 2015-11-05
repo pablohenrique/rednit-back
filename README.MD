@@ -33,65 +33,57 @@ http://localhost:3000/api/accounts
 {
     name: String,
     loc: { type: [Number], index: '2d' },
-    userData: {
-        id: Number,
-        email: String,
-        photoUrl: String,
-        accounts: {
-            facebookAccount: {
-                id: String,
-                likes: [
-                    {
-                        id: Number,
-                        account: [mongoose.Schema.Types.Mixed],
-                        page: {
-                            id: Number,
-                            facebookId: String,
-                            name: String,
-                            about: String,
-                            likes: [
-                                {
-                                    id: Number,
-                                    account: [mongoose.Schema.Types.Mixed],
-                                    page: {
-                                        id: Number,
-                                        facebookId: String,
-                                        name: String,
-                                        about: String,
-                                        likes: {type: [Schema.Types.Mixed], default: []}
-                                    },
-                                    instant: Date
-                                }
-                            ]
-                        },
-                        instant: Date
-                    }
-                ]
+    email: { type: String, index: true },
+    photoUrl: String,
+    accounts: {
+        facebookAccount: {
+            facebookId: { type: String, index: true },
+            likes: [
+                {
+                    facebookId: { type: String, index: true },
+                    page: {
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: 'Pages',
+                        index: true
+                    },
+                    instant: Date
+                }
+            ],
+            friends : {
+                type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
+                index: true
+            }
+        },
+        twitterAccount: {
+            twitterId: { type: Number, index: true },
+            favorites: {
+                type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweets' }],
+                index: true
             },
-            twitterAccount: {
-                id: Number,
-                favorites: [
-                    {
-                        id: Number,
-                        twitterId: Number,
-                        text: String,
-                        createdAt: Date,
-                        favorites: [
-                            {
-                                id: Number,
-                                twitterId: Number,
-                                text: String,
-                                createdAt: Date,
-                                favorites: {type: [Schema.Types.Mixed], default: []}
-                            }
-                        ]
-                    }
-                ]
+            following: {
+                type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
+                index: true
             }
         }
-    },
-    myFriends: {type: [Schema.Types.ObjectId], default: []},
-    friendsOfMe: {type: [Schema.Types.ObjectId], default: []}
+    }
+}
+```
+
+### Pages Object Structure
+```javascript
+{
+    facebookId: { type: String, index: true },
+    name: { type: String, index: true },
+    about: String
+}
+```
+
+### Tweet Object Structure
+```javascript
+{
+    twitterId: { type: Number, index: true },
+    text: String,
+    createdAt: Date
 }
 ```
 
@@ -121,6 +113,17 @@ function(key, values){
 }
 );
 ```
+
+## rednit-back API
+
+### How to use findPeople method
+```bash
+[GET] http://localhost:3000/api/accounts/{user_id}/findPeople[?miles=INTEGER]
+```
+Keep in mind that the default "miles" is set to 4. That means the method will search people in a **5** miles radius.
+The INTEGER in that string shall be in this range: [1..10]
+The "miles" query is OPTIONAL!
+The user_id is NOT OPTIONAL!
 
 Fucking References:
 

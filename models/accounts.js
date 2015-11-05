@@ -37,7 +37,7 @@ var accountsSchema = new mongoose.Schema({
                 index: true
             }
         }
-    },
-})
+    }
+});
 
 module.exports = restful.model(modelName, accountsSchema);
