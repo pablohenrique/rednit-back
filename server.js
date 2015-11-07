@@ -24,5 +24,5 @@ app.use(bodyparser.json());
 app.use('/api', require('./routes/api'));
 
 // Start server
-app.listen(PORT);
+app.listen(PORT, '0.0.0.0'); //Listen for connections. It will be reachable from any local IP address
 console.log('API is running on port ' + PORT);
