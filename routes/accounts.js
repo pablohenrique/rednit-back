@@ -2,6 +2,25 @@ var async = require('async');
 
 var Accounts = require('../models/accounts');
 Accounts.methods(['get', 'post', 'put', 'delete']);
+
+Accounts.route('friends.get', {
+    detail: true,
+    handler: function(req, res, next){
+        var accountId = req.params.id;
+        Accounts.findById(accountId, function(err, obj){
+            if(err){
+                res.status(500).json(err);
+            } else {
+                var friends = {
+                    facebook: obj._doc.accounts.facebookAccount.friends,
+                    twitter: obj._doc.accounts.twitterAccount.following
+                };
+                res.status(200).json(friends);
+            }
+        });
+    }
+});
+
 Accounts.route('findPeople.get', {
     detail: true, // if detail is true, we'll need an object ID. EX: /accounts/5630eb705a97cb1406efa47a/findPeople [GET]
     handler: function(req, res, next){
