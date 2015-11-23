@@ -33,7 +33,8 @@ var accountsSchema = new mongoose.Schema({
                 index: true
             },
             following: {
-                type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
+                //type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
+                type: [{type: Number}],
                 index: true
             }
         }
