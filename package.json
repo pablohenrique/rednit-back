@@ -18,6 +18,7 @@
     "express": "^4.13.3",
     "geolib": "^2.0.18",
     "mongoose": "^4.2.3",
+    "mongoose-unique-validator": "0.6.1",
     "node-geolocation": "^1.15.14",
     "node-restful": "^0.2.2",
     "request": "^2.65.0"

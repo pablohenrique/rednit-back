@@ -9,10 +9,10 @@ var accountsSchema = new mongoose.Schema({
     photoUrl: String,
     accounts: {
         facebookAccount: {
-            facebookId: { type: String, index: true },
+            facebookId: { type: String, unique: true, required : true, dropDups: true, index: true },
             likes: [
                 {
-                    facebookId: { type: String, index: true },
+                    facebookId: { type: String, unique: true, required : true, dropDups: true, index: true },
                     page: {
                         type: mongoose.Schema.Types.ObjectId,
                         ref: 'Pages',
@@ -27,7 +27,7 @@ var accountsSchema = new mongoose.Schema({
             }
         },
         twitterAccount: {
-            twitterId: { type: Number, index: true },
+            twitterId: { type: Number, unique: true, required : true, dropDups: true,  index: true },
             favorites: {
                 type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweets' }],
                 index: true

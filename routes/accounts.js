@@ -22,7 +22,7 @@ Accounts.route('friends.get', {
 });
 
 Accounts.route('findPeople.get', {
-    detail: true, // if detail is true, we'll need an object ID. EX: /accounts/5630eb705a97cb1406efa47a/findPeople [GET]
+    detail: true, // if detail is true, we'll need an object ID. EX: /api/accounts/5630eb705a97cb1406efa47a/findPeople [GET]
     handler: function(req, res, next){
         var accountId = req.params.id;
         Accounts.findById(accountId, function(err, obj){
