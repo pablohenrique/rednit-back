@@ -37,10 +37,10 @@ http://localhost:3000/api/accounts
     photoUrl: String,
     accounts: {
         facebookAccount: {
-            facebookId: { type: String, index: true },
+            facebookId: { type: String, unique: true, required : true, dropDups: true, index: true },
             likes: [
                 {
-                    facebookId: { type: String, index: true },
+                    facebookId: { type: String, unique: true, required : true, dropDups: true, index: true },
                     page: {
                         type: mongoose.Schema.Types.ObjectId,
                         ref: 'Pages',
@@ -55,13 +55,14 @@ http://localhost:3000/api/accounts
             }
         },
         twitterAccount: {
-            twitterId: { type: Number, index: true },
+            twitterId: { type: Number, unique: true, required : true, dropDups: true,  index: true },
             favorites: {
                 type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweets' }],
                 index: true
             },
             following: {
-                type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
+                //type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
+                type: [{type: Number}],
                 index: true
             }
         }
