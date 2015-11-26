@@ -4,8 +4,7 @@ var modelName = 'Pages';
 
 var pagesSchema = new mongoose.Schema ({
     facebookId: { type: String, index: true },
-    name: { type: String, index: true },
-    about: String
+    name: { type: String, index: true }
 });
 
 module.exports = restful.model(modelName, pagesSchema);

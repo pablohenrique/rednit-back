@@ -2,6 +2,8 @@
 var express = require('express');
 var router = express.Router();
 
+String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
+
 // Routes
 var Accounts = require('./accounts');
 Accounts.register(router, '/accounts');

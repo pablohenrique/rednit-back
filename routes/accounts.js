@@ -47,7 +47,7 @@ Accounts.route('findPeople.get', {
                             $center:[location, miles * 0.000981747704245008]
                         }
                     },
-                    _id:{
+                    _id: {
                         $ne: accountId
                     },
                     //$and: [
