@@ -3,7 +3,7 @@ var mongoose = restful.mongoose;
 var modelName = 'Pages';
 
 var pagesSchema = new mongoose.Schema ({
-    facebookId: { type: String, index: true },
+    facebookId: { type: String, index: true, unique: true, required : true, dropDups: true },
     name: { type: String, index: true }
 });
 
