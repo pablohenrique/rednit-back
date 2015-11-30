@@ -62,7 +62,7 @@ Accounts.route('findPeople.get', {
                     //        }
                     //    }
                     //]
-                    "accounts.facebookAccount.likes.facebookId": {
+                    "accounts.facebookAccount.likes._id": {
                         $in: facebookIdArrayFromAccountObject
                     }
                 }).exec(function(err, results){
