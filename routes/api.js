@@ -8,8 +8,11 @@ String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 var Accounts = require('./accounts');
 Accounts.register(router, '/accounts');
 
-var Pages = require('./pages');
-Pages.register(router, '/pages');
+//var Pages = require('./pages');
+//Pages.register(router, '/pages');
+
+var Likes = require('./likes');
+Likes.register(router, '/likes');
 
 var Tweets = require('./tweets');
 Tweets.register(router, '/tweets');

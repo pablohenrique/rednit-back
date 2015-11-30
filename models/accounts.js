@@ -10,31 +10,33 @@ var accountsSchema = new mongoose.Schema({
     accounts: {
         facebookAccount: {
             facebookId: { type: String, unique: true, required : true, dropDups: true, index: true },
-            likes: [
-                {
-                    facebookId: { type: String, unique: true, required : true, dropDups: true, index: true },
-                    page: {
-                        type: mongoose.Schema.Types.ObjectId,
-                        ref: 'Pages',
-                        index: true
-                    },
-                    instant: Date
-                }
-            ],
+            likes: {
+                //{
+                //    facebookId: { type: String, required : true, dropDups: true, index: true },
+                //    page: {
+                //        type: mongoose.Schema.Types.ObjectId,
+                //        ref: 'Pages',
+                //        index: true
+                //    },
+                //    instant: Date
+                //}
+                type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Likes', default: []}],
+                index: true
+            },
             friends : {
-                type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
+                type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts', default: []}],
                 index: true
             }
         },
         twitterAccount: {
-            twitterId: { type: Number, unique: true, dropDups: true,  index: true },
+            twitterId: { type: Number, dropDups: true, index: true },
             favorites: {
-                type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweets' }],
+                type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweets', default: [] }],
                 index: true
             },
             following: {
                 //type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
-                type: [{type: Number}],
+                type: [{type: Number, default: []}],
                 index: true
             }
         }
