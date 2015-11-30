@@ -11,15 +11,6 @@ var accountsSchema = new mongoose.Schema({
         facebookAccount: {
             facebookId: { type: String, unique: true, required : true, dropDups: true, index: true },
             likes: {
-                //{
-                //    facebookId: { type: String, required : true, dropDups: true, index: true },
-                //    page: {
-                //        type: mongoose.Schema.Types.ObjectId,
-                //        ref: 'Pages',
-                //        index: true
-                //    },
-                //    instant: Date
-                //}
                 type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Likes', default: []}],
                 index: true
             },

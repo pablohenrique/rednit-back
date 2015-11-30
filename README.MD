@@ -38,31 +38,24 @@ http://localhost:3000/api/accounts
     accounts: {
         facebookAccount: {
             facebookId: { type: String, unique: true, required : true, dropDups: true, index: true },
-            likes: [
-                {
-                    facebookId: { type: String, unique: true, required : true, dropDups: true, index: true },
-                    page: {
-                        type: mongoose.Schema.Types.ObjectId,
-                        ref: 'Pages',
-                        index: true
-                    },
-                    instant: Date
-                }
-            ],
+            likes: {
+                type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Likes', default: []}],
+                index: true
+            },
             friends : {
-                type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
+                type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts', default: []}],
                 index: true
             }
         },
         twitterAccount: {
-            twitterId: { type: Number, unique: true, required : true, dropDups: true,  index: true },
+            twitterId: { type: Number, dropDups: true, index: true },
             favorites: {
-                type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweets' }],
+                type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tweets', default: [] }],
                 index: true
             },
             following: {
                 //type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Accounts'}],
-                type: [{type: Number}],
+                type: [{type: Number, default: []}],
                 index: true
             }
         }
@@ -70,12 +63,20 @@ http://localhost:3000/api/accounts
 }
 ```
 
-### Pages Object Structure
+### [DEPRECATED->Likes] Pages Object Structure
 ```javascript
 {
     facebookId: { type: String, index: true },
     name: { type: String, index: true },
     about: String
+}
+```
+
+### Likes Object Structure
+```javascript
+{
+    facebookId: { type: String, unique: true, required : true, dropDups: true, index: true },
+    name: { type: String, index: true }
 }
 ```
 
