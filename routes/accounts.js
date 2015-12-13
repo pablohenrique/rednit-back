@@ -2,6 +2,28 @@ var async = require('async');
 
 var Accounts = require('../models/accounts');
 Accounts.methods(['get', 'post', 'put', 'delete']);
+//Accounts.methods(['get', 'put', 'delete']);
+
+//Accounts.route('post',{
+//    handler:function(req,res,next){
+//        var obj = req.body;
+//        var arrayObjId = [];
+//        var arrayNoId = obj.accounts.facebookAccount.likes;
+//        if(arrayNoId.length > 0) {
+//            for (var i = 0; i < arrayNoId.length; i++) {
+//                arrayObjId.push(
+//                    new ObjectId(arrayNoId[i])
+//                );
+//            }
+//        }
+//        obj.accounts.facebookAccount.likes = arrayObjId;
+//        var acc = new Accounts(obj);
+//        acc.save(function(err,ret){
+//            console.log( (err || ret) );
+//            res.json( (err || ret) );
+//        });
+//    }
+//});
 
 Accounts.route('friends.get', {
     detail: true,
@@ -41,6 +63,7 @@ Accounts.route('findPeople.get', {
                 obj._doc.accounts.twitterAccount.favorites.forEach(function(element){
                     twitterIdArrayFromAccountObject.push(element.twitterId);
                 });
+
                 Accounts.find({
                     loc:{
                         $geoWithin:{
@@ -49,7 +72,8 @@ Accounts.route('findPeople.get', {
                     },
                     _id: {
                         $ne: accountId
-                    },
+                    }
+                    //,
                     //$and: [
                     //    {
                     //        "accounts.facebookAccount.likes.facebookId": {
@@ -62,9 +86,9 @@ Accounts.route('findPeople.get', {
                     //        }
                     //    }
                     //]
-                    "accounts.facebookAccount.likes._id": {
-                        $in: facebookIdArrayFromAccountObject
-                    }
+                    //"accounts.facebookAccount.likes._id": {
+                    //    $in: facebookIdArrayFromAccountObject
+                    //}
                 }).exec(function(err, results){
                     res.status(200).json(false, (err) ? {} : results );
                 });
