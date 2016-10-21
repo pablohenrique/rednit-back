@@ -129,13 +129,11 @@ The INTEGER in that string shall be in this range: [1..10]
 The "miles" query is OPTIONAL!
 The user_id is NOT OPTIONAL!
 
-Fucking References:
+References:
 
 * https://github.com/matthoiland/restful-api-demo
 * https://github.com/baugarten/node-restful
 * http://expressjs.com/starter/generator.html
 * https://github.com/radjivC/node-geolocation
 * https://github.com/manuelbieh/geolib
-
-How to do shit:
 * http://blog.robertonodi.me/how-to-use-geospatial-indexing-in-mongodb-using-express-and-mongoose/# rednit-back
