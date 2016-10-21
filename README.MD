@@ -1,4 +1,5 @@
 # Rednit-back
+This is the backend for the Android app [Rednit](https://github.com/pablohpsilva/rednit). It uses **FIWARE IoT platform** for testing, data mining and storing data.
 
 ## Using this project
 
