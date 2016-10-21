@@ -1,12 +1,15 @@
-Do you want to make this fucking awesome project works?!
+# Rednit-back
 
-Follow these motherfuckin' steps:
+## Using this project
+
+Follow these steps:
 
 * Install node and mongodb
 ```shell
 $ brew install node mongodb
 ```
-* Clone this motherfucker
+
+* Clone this repository
 * Go inside the cloned directory
 * Do this:
 ``` shell
@@ -16,13 +19,12 @@ npm install --save express mongoose node-restful body-parser
 ``` shell
 sudo npm install -g nodemon
 ```
-* You can start this shit by doin':
+* You can start it doing:
 ``` shell
 nodemon server.js
 ```
 
-
-* Wanna test and be happy as a motherfucker? Go to your browser and type this:
+* Go to your browser and type this:
 ```shell
 http://localhost:3000/api/accounts
 ```
